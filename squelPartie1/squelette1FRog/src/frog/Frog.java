@@ -32,7 +32,7 @@ public class Frog implements IFrog {
 	public void move(Direction key) {
 		this.dir = key;
 
-		/*association de la nouvelle pos en fonc de dir*/
+		//association de la nouvelle pos en fonc de dir*/
 		if (key == Direction.up && this.pos.ord < this.game.height - 1){
 			this.pos = new Case(this.pos.absc, this.pos.ord + 1);
 		}
@@ -46,7 +46,7 @@ public class Frog implements IFrog {
 			this.pos = new Case(this.pos.absc - 1, this.pos.ord);
 		}
 
-		/*verif de la wincon*/
+		//verif de la wincon*/
 		this.game.testLose();
 		this.game.testWin();
 	}
