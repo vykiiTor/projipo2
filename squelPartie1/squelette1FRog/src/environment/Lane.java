@@ -23,10 +23,6 @@ public class Lane {
 		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
 	}
 
-	public Lane(Game game, int ord) {
-
-	}
-
 	public void update() {
 
 		// toDDo
@@ -72,10 +68,6 @@ public class Lane {
 		removeCar();
 	}
 
-	public String toString() { //avoir
-
-		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
-	}
 
 
 	/*
