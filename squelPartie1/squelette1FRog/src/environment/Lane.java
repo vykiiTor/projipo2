@@ -18,9 +18,9 @@ public class Lane {
 		this.game = game;
 		this.ord = ord;
 		this.density = density;
-		this.cars = new ArrayList<Car>();
+		//this.cars = new ArrayList<Car>(); pas nécessaire car redon
 		this.leftToRight = game.randomGen.nextBoolean();
-		this.speed = 3;
+		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) +1;
 	}
 	public Lane(Game game, int ord){
 

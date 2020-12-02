@@ -17,7 +17,7 @@ public class Car {
 	//TODdO Constructeur(s) IL EST NORMALEMENT BON
 	public Car(Game game, Case frontPosision, boolean leftToRight){
 		this.game = game;
-		this.length = game.randomGen.nextInt(4) + 1; //jsp si c'est bon
+		this.length = game.randomGen.nextInt(4) + 1; //ALEA ENTRE 1 et 3 inclu
 		this.leftToRight = leftToRight;
 		if(leftToRight){
 			this.leftPosition = new Case(frontPosision.absc-this.length, frontPosision.ord);

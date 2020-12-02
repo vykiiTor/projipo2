@@ -12,7 +12,7 @@ public class Environment implements IEnvironment {
 
     public Environment(Game game) {
         this.game = game;
-        this.routes = new ArrayList<Lane>();
+        this.routes = new ArrayList<Lane(game, 0, 0.0)>();
 
     }
 
@@ -23,7 +23,7 @@ public class Environment implements IEnvironment {
 
     @Override
     public boolean isWinningPosition(Case c) {
-        return false;
+        return c.ord == this.game.height - 1;
     }
 
     @Override
