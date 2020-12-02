@@ -1,9 +1,9 @@
 package environment;
 
-import java.util.ArrayList;
-
-import util.Case;
 import gameCommons.Game;
+import util.Case;
+
+import java.util.ArrayList;
 
 public class Lane {
 	private Game game;
@@ -14,15 +14,16 @@ public class Lane {
 	private double density;
 
 	//TODdO : Constructeur(s)
-	public Lane(Game game, int ord, double density){
+	public Lane(Game game, int ord, double density) {
 		this.game = game;
 		this.ord = ord;
 		this.density = density;
 		//this.cars = new ArrayList<Car>(); pas nécessaire car redon
 		this.leftToRight = game.randomGen.nextBoolean();
-		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) +1;
+		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
 	}
-	public Lane(Game game, int ord){
+
+	public Lane(Game game, int ord) {
 
 	}
 
@@ -43,9 +44,35 @@ public class Lane {
 
 	// TOdDO : ajout de methodes
 
+	public void removeCar() {
+		ArrayList<Car> oldCars = new ArrayList<Car>();
+		for (Car c : this.cars) {
+			if (c.outOfBounds()) {
+				oldCars.add(c);
+			}
+		}
+		for (Car c : oldCars) {
+			this.cars.remove(c);
+		}
+	}
 
+	public boolean isSafe(Case k) {
+		for (Car c : cars) {
+			if (k.ord != c.getLeftPos().ord || k.absc < c.getLeftPos().absc || k.absc >= c.getLeftPos().absc + c.getLength()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-	public String toString() {
+	public void moveCars(boolean b){
+		for (Car c : cars){
+			c.move(b);
+		}
+		removeCar();
+	}
+
+	public String toString() { //avoir
 
 		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
 	}
@@ -65,10 +92,6 @@ public class Lane {
 				cars.add(new Car(game, getBeforeFirstCase(), leftToRight));
 			}
 		}
-	}
-
-	private boolean isSafe(Case c) {
-
 	}
 
 	private Case getFirstCase() {

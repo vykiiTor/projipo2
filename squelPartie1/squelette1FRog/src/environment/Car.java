@@ -39,11 +39,17 @@ public class Car {
 		addToGraphics();
 	}
 
-	// si la position est dans l'affichage c'est bon non sinon
-	public boolean appearsInBounds(){
+	// si la position est dans l'affichage de la voiture c'est bon non sinon
+	public boolean outOfBounds(){
 		return (this.leftPosition.absc + this.length > 0 && this.leftPosition.absc < this.game.width);
 	}
 
+	public Case getLeftPos(){
+		return this.leftPosition;
+	}
+	public int getLength(){
+		return this.length;
+	}
 	//public boolean coverCases(Case pos){} jsp elle fait quoi
 	
 	
