@@ -41,7 +41,7 @@ public class Lane {
 		//this.removeCar();
 
 		for (Car c : cars){
-			moveCars(timer == speed);
+			c.move(timer == speed);
 		}
 		this.timer= 0;
 
@@ -62,12 +62,13 @@ public class Lane {
 	}
 
 	public boolean isSafe(Case k) {
+
 		for (Car c : cars) {
-			if (k.ord != c.getLeftPos().ord || k.absc < c.getLeftPos().absc || k.absc >= c.getLeftPos().absc + c.getLength()) {
-				return true;
+			if(k.absc >= c.getLeftPos().absc && k.absc < c.getLeftPos().absc + c.getLength() ){
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public void moveCars(boolean b){
