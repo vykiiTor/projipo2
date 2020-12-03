@@ -12,6 +12,7 @@ public class Lane {
 	private ArrayList<Car> cars = new ArrayList<>();
 	private boolean leftToRight;
 	private double density;
+	private int timer;
 
 	//TODdO : Constructeur(s)
 	public Lane(Game game, int ord, double density) {
@@ -35,13 +36,21 @@ public class Lane {
 		// elle ne bougent pas
 
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
+		this.timer++;
+		this.mayAddCar();
+		//this.removeCar();
+
+		for (Car c : cars){
+			moveCars(timer == speed);
+		}
+		this.timer= 0;
 
 	}
 
 	// TOdDO : ajout de methodes
 
 	public void removeCar() {
-		ArrayList<Car> oldCars = new ArrayList<Car>();
+		ArrayList<Car> oldCars = new ArrayList<>();
 		for (Car c : this.cars) {
 			if (c.outOfBounds()) {
 				oldCars.add(c);
@@ -68,6 +77,10 @@ public class Lane {
 		removeCar();
 	}
 
+	public String toString() { //avoir
+
+		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
+	}
 
 
 	/*

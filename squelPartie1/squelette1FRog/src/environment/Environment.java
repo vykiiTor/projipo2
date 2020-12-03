@@ -8,17 +8,20 @@ import java.util.ArrayList;
 
 public class Environment implements IEnvironment {
     private Game game;
-    private ArrayList<Lane> routes;
+    private ArrayList<Lane> routes = new ArrayList<>();
 
     public Environment(Game game) {
         this.game = game;
-        this.routes = new ArrayList<Lane(game, 0, 0.0)>();
-
+        this.routes.add(new Lane(game, 0, 0));
+        for (int i = 1; i < this.game.height - 1; i++) {
+            this.routes.add(new Lane(game, i, this.game.defaultDensity));
+        }
+        this.routes.add(new Lane(game, game.height, 0));
     }
 
     @Override
     public boolean isSafe(Case c) {
-        return false;
+        return this.routes.get(c.ord).isSafe(c);
     }
 
     @Override
@@ -28,9 +31,7 @@ public class Environment implements IEnvironment {
 
     @Override
     public void update() {
-
+        for (Lane lane : this.routes)
+            lane.update();
     }
-
-    //TODO
-
 }
