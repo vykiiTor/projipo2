@@ -41,7 +41,7 @@ public class Car {
 
 	// si la position est dans l'affichage de la voiture c'est bon non sinon
 	public boolean outOfBounds(){
-		return (this.leftPosition.absc + this.length >= 0 && this.leftPosition.absc <= this.game.width);
+		return !(this.leftPosition.absc + this.length >= 0 && this.leftPosition.absc <= this.game.width);
 	}
 
 	public Case getLeftPos(){

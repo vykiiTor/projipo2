@@ -22,6 +22,11 @@ public class Lane {
 		//this.cars = new ArrayList<Car>(); pas nécessaire car redon
 		this.leftToRight = game.randomGen.nextBoolean();
 		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
+		//*
+		for (int i = 0; i < 4*game.height; i++) {
+			moveCars(true);
+			mayAddCar();
+		}
 	}
 
 	public void update() {
@@ -43,7 +48,7 @@ public class Lane {
 		for (Car c : cars){
 			c.move(timer == speed);
 		}
-		this.timer= 0;
+		if(timer == speed){this.timer= 0;} //*
 
 	}
 
