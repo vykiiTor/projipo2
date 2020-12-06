@@ -41,7 +41,6 @@ public class Lane {
 		// A chaque tic d'horloge, une voiture peut �tre ajout�e
 		this.timer++;
 		this.mayAddCar();
-		//this.removeCar();
 
 		for (Car c : cars){
 			c.move(timer == speed);
