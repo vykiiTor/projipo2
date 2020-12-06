@@ -50,7 +50,6 @@ public class Car {
 	public int getLength(){
 		return this.length;
 	}
-	//public boolean coverCases(Case pos){} jsp elle fait quoi
 	
 	
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
