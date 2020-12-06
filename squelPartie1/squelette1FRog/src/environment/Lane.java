@@ -22,16 +22,14 @@ public class Lane {
 		//this.cars = new ArrayList<Car>(); pas nécessaire car redon
 		this.leftToRight = game.randomGen.nextBoolean();
 		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
-		//*
-		for (int i = 0; i < 4*game.height; i++) {
+		//* cert a faire apparaître les voitures des le début mais marche pas avec notre partie 3 donc on l'enlève apres
+		for (int i = 0; i < game.height; i++) {
 			moveCars(true);
 			mayAddCar();
 		}
 	}
 
 	public void update() {
-
-		// toDDo
 
 		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
 		// d'horloge" �gal � leur vitesse
@@ -83,10 +81,6 @@ public class Lane {
 		removeCar();
 	}
 
-	public String toString() { //avoir
-
-		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
-	}
 
 
 	/*

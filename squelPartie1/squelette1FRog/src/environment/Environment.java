@@ -22,7 +22,7 @@ public class Environment implements IEnvironment {
     @Override
     public boolean isSafe(Case c) {
         return this.routes.get(c.ord).isSafe(c);
-    }
+    } //car le get prend qu'un int
 
     @Override
     public boolean isWinningPosition(Case c) {
