@@ -21,34 +21,17 @@ public class Lane {
 		this.density = density;
 		this.leftToRight = game.randomGen.nextBoolean();
 		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
-		//* cert a faire apparaître les voitures des le début mais marche pas avec notre partie 3 donc on l'enlève apres
-		for (int i = 0; i < game.height; i++) {
+
+		//C'est pas dans mon code je l'ai mis en commentaire au cas où
+		/*for (int i = 0; i < game.height; i++) {
 			moveCars(true);
 			mayAddCar();
-		}
-	}
-
-	public void update() {
-
-		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
-		// d'horloge" �gal � leur vitesse
-		// Notez que cette m�thode est appel�e � chaque tic d'horloge
-
-		// Les voitures doivent etre ajoutes a l interface graphique meme quand
-		// elle ne bougent pas
-
-		// A chaque tic d'horloge, une voiture peut �tre ajout�e
-		this.timer++;
-		this.mayAddCar();
-
-		for (Car c : cars){
-			c.move(timer == speed);
-		}
-		if(timer == speed){this.timer= 0;} //*
-
+		}*/
 	}
 
 	// TOdDO : ajout de methodes
+
+	//public void update() {
 
 	public void removeCar() {
 		ArrayList<Car> oldCars = new ArrayList<>();
@@ -79,6 +62,10 @@ public class Lane {
 		removeCar();
 	}
 
+	public String toString() { //avoir
+
+		return "Lane [ord=" + this.ord + ", cars=" + this.cars + "]";
+	}
 
 
 	/*
@@ -109,6 +96,20 @@ public class Lane {
 			return new Case(-1, ord);
 		} else
 			return new Case(game.width, ord);
+	}
+
+	//---------------------------------
+
+	public void update() {
+		this.timer++;
+		this.mayAddCar();
+
+
+		for (Car c : this.cars){
+			c.move(timer == speed);
+		}
+		this.timer= 0;
+		//if(timer == speed){	this.timer = 0;} //(Avant)
 	}
 
 }

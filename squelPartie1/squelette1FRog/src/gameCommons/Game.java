@@ -1,10 +1,10 @@
 package gameCommons;
 
-import java.awt.Color;
-import java.util.Random;
-
 import graphicalElements.Element;
 import graphicalElements.IFroggerGraphics;
+
+import java.awt.*;
+import java.util.Random;
 
 public class Game {
 
@@ -75,14 +75,6 @@ public class Game {
 	 * @return true si le partie est perdue
 	 */
 
-	/*ok*/
-	public boolean testLose() {
-		if (!this.environment.isSafe(this.frog.getPosition())){
-			this.graphic.endGameScreen("t'as perdu");
-			return true;
-		}
-		return false;
-	}
 
 	/**
 	 * Teste si la partie est gagnee et lance un �cran de fin appropri� si tel
@@ -109,6 +101,26 @@ public class Game {
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
 		testLose();
 		testWin();
+	}
+
+	//--------------------------- modfif pour part 3
+
+	public IEnvironment getEnv() {
+		return this.environment;
+	}
+
+	//J'ai rajouté le score dans l'affichage
+	public boolean testLose() {
+		if (!this.environment.isSafe(this.frog.getPosition())) {
+			this.graphic.endGameScreen("T'as perdu  \n Score: " + environment.getScore());
+			return true;
+		}
+		return false;
+	}
+
+	// Récupere la grenouille du jeu
+	public IFrog getFrog() {
+		return this.frog;
 	}
 
 }

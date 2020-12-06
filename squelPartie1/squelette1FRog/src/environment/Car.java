@@ -39,29 +39,34 @@ public class Car {
 		addToGraphics();
 	}
 
-	// si la position est dans l'affichage de la voiture c'est bon non sinon
-	public boolean outOfBounds(){
-		return !(this.leftPosition.absc + this.length >= 0 && this.leftPosition.absc <= this.game.width);
-	}
-
 	public Case getLeftPos(){
 		return this.leftPosition;
 	}
 	public int getLength(){
 		return this.length;
 	}
+
+	// si la position est dans l'affichage de la voiture c'est bon non sinon
+	public boolean outOfBounds(){
+		return !(this.leftPosition.absc + this.length >= 0 && this.leftPosition.absc <= this.game.width);
+	}
 	
 	
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
+	//private void addToGraphics() {
+
+	//--------------------------------------------------
+
+//J'ai add: int s = game.getEnv().getScore(); le score va nous aider a decaler les voitures en fonc du mouvement du joueur
 	private void addToGraphics() {
+		//add score
+		int score = game.getEnv().getScore();
 		for (int i = 0; i < length; i++) {
 			Color color = colorRtL;
-			if (this.leftToRight){
+			if (this.leftToRight) {
 				color = colorLtR;
 			}
-			game.getGraphic()
-					.add(new Element(leftPosition.absc + i, leftPosition.ord, color));
+			game.getGraphic().add(new Element(leftPosition.absc + i, leftPosition.ord -score, color));
 		}
 	}
-
 }
