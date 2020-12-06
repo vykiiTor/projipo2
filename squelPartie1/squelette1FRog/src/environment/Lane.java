@@ -19,7 +19,6 @@ public class Lane {
 		this.game = game;
 		this.ord = ord;
 		this.density = density;
-		//this.cars = new ArrayList<Car>(); pas nécessaire car redon
 		this.leftToRight = game.randomGen.nextBoolean();
 		this.speed = game.randomGen.nextInt(game.minSpeedInTimerLoops) + 1;
 		//* cert a faire apparaître les voitures des le début mais marche pas avec notre partie 3 donc on l'enlève apres
